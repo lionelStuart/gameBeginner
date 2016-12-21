@@ -11,8 +11,15 @@ public class BunnyGame extends ApplicationAdapter {
 
 	private WorldController worldController;
 	private WorldRender worldRender;
-
 	private boolean paused;
+
+	public boolean isPaused() {
+		return paused;
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
+	}
 
 	@Override
 	public void create() {
@@ -23,10 +30,10 @@ public class BunnyGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
-		if (!paused) {
+		if (!isPaused()) {
 			worldController.update(Gdx.graphics.getDeltaTime());
 		}
-		
+
 		Gdx.gl.glClearColor(0 / 255.0f, 0 / 255.0f, 255 / 255.0f, 1 / 1.0f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		worldRender.render();
@@ -41,13 +48,15 @@ public class BunnyGame extends ApplicationAdapter {
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		paused = true;
+		setPaused(true);
+		;
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		paused = false;
+		setPaused(false);
+		;
 	}
 
 	@Override

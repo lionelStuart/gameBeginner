@@ -7,22 +7,23 @@ import com.gameBeginner.object.AbstractGameObject;
 
 public class CameraHelper {
 	private static final String TAG = CameraHelper.class.getName();
-	
-	private final float MAX_ZOOM_IN=0.25f;
-	private final float MAX_ZOOM_OUT=10.f;
-	
+
+	private final float MAX_ZOOM_IN = 0.25f;
+	private final float MAX_ZOOM_OUT = 10.f;
+
 	private Vector2 position;
 	private float zoom;
 	private AbstractGameObject target;
-	
+
 	public CameraHelper() {
 		// TODO Auto-generated constructor stub
-		position=new Vector2();
-		zoom=1.0f;
+		position = new Vector2();
+		zoom = 1.0f;
 	}
-	
-	public void update(float deltaTime){
-		if (!hasTarget()) return;
+
+	public void update(float deltaTime) {
+		if (!hasTarget())
+			return;
 
 		position.x = target.position.x + target.origin.x;
 		position.y = target.position.y + target.origin.y;
@@ -32,14 +33,14 @@ public class CameraHelper {
 		return position;
 	}
 
-	public void setPosition(float x,float y) {
+	public void setPosition(float x, float y) {
 		this.position.set(x, y);
 	}
 
-	public void addZoom(float amount){
-		this.setZoom(zoom+amount);
+	public void addZoom(float amount) {
+		this.setZoom(zoom + amount);
 	}
-	
+
 	public float getZoom() {
 		return zoom;
 	}
@@ -55,20 +56,20 @@ public class CameraHelper {
 	public void setTarget(AbstractGameObject target) {
 		this.target = target;
 	}
-	
+
 	public boolean hasTarget() {
-		return target!=null;
+		return target != null;
 	}
-	
+
 	public boolean hasTarget(AbstractGameObject target) {
-		return hasTarget() &&this.target.equals(target);
+		return hasTarget() && this.target.equals(target);
 	}
-	
+
 	public void applyTo(OrthographicCamera camera) {
-		camera.position.x=this.position.x;
-		camera.position.y=this.position.y;
-		camera.zoom=this.zoom;
+		camera.position.x = this.position.x;
+		camera.position.y = this.position.y;
+		camera.zoom = this.zoom;
 		camera.update();
 	}
-	
+
 }
