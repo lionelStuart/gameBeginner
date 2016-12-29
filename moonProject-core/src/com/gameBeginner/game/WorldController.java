@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.InputAdapter;
 import com.gameBeginner.object.TestSprites;
 import com.gameBeginner.util.CameraHelper;
+import com.gameBeginner.util.Constants;
 
 public class WorldController extends InputAdapter {
 	private static final String TAG = WorldController.class.getName();
@@ -14,6 +15,8 @@ public class WorldController extends InputAdapter {
 	// public Level level;
 	public int lives;
 	public int score;
+	public Level level1;
+	
 
 	public CameraHelper cameraHelper;
 	public TestSprites testSprites;
@@ -27,9 +30,10 @@ public class WorldController extends InputAdapter {
 
 		Gdx.input.setInputProcessor(this);
 		cameraHelper = new CameraHelper();
-		testSprites = new TestSprites();
 		Assets.getInstance().init(new AssetManager());
-		testSprites.initAssetsInstance();
+//		testSprites = new TestSprites();
+//		testSprites.initAssetsInstance();
+		level1=new Level(Constants.LEVEL_01);
 		// lives=Constants.LIVES_START;
 		Gdx.app.debug(TAG, "world contorller inited");
 	}
@@ -40,10 +44,12 @@ public class WorldController extends InputAdapter {
 	}
 
 	public void update(float deltaTime) {
+		level1.update(deltaTime);
 //		Gdx.app.debug(TAG, "update time: " + deltaTime);
 		handleDebugInput(deltaTime);
-		testSprites.update(deltaTime);
+//		testSprites.update(deltaTime);
 		cameraHelper.update(deltaTime);
+
 		// Gdx.app.debug(TAG, "handle update");
 	}
 

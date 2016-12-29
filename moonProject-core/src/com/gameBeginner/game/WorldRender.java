@@ -52,8 +52,11 @@ public class WorldRender implements Disposable {
 		// //
 		worldController.cameraHelper.applyTo(camera);
 		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		worldController.level1.render(batch);
+		batch.end();
 		// batch.begin();
-		worldController.testSprites.render(batch);
+		//worldController.testSprites.render(batch);
 		// batch.end();
 	}
 

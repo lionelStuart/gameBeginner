@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Disposable;
 import com.gameBeginner.util.Constants;
 
+
 public class Assets implements Disposable, AssetErrorListener {
 
 	private static final String TAG = Assets.class.getName();
@@ -120,11 +121,10 @@ public class Assets implements Disposable, AssetErrorListener {
 	public void init(AssetManager assetManager) {
 		this.assetManager = assetManager;
 		assetManager.setErrorListener(this);
-		assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
+		assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS,TextureAtlas.class);
 		assetManager.finishLoading();
 
 		debugLoading();
-
 		TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
 		for (Texture texture : atlas.getTextures()) {
 			texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
